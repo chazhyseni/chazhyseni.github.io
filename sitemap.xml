@@ -40,12 +40,12 @@
   </url>
   
   <url>
-    <loc>https://chazhyseni.github.io/talk/</loc>
+    <loc>https://chazhyseni.github.io/tags/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chazhyseni.github.io/tags/</loc>
-    <priority>0</priority>
+    <loc>https://chazhyseni.github.io/talk/</loc>
   </url>
   
   <url>
