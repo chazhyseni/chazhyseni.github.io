@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://chazhyseni.github.io/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://chazhyseni.github.io/author/admin/</loc>
   </url>
   
@@ -41,6 +36,11 @@
   
   <url>
     <loc>https://chazhyseni.github.io/publication/</loc>
+  </url>
+  
+  <url>
+    <loc>https://chazhyseni.github.io/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
