@@ -6,7 +6,7 @@
     <description>Recent content in Presentations on SpEcEvGen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; Chaz Hyseni 2019</copyright>
+    <copyright>&amp;copy; Chaz Hyseni {year}</copyright>
     
 	<atom:link href="https://chazhyseni.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
     
