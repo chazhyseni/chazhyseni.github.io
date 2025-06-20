@@ -25,9 +25,6 @@
   <a href="https://www.researchgate.net/profile/Chaz_Hyseni" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
     <i class="fab fa-researchgate" style="margin-right: 10px; font-size: 20px;"></i> ResearchGate
   </a>
-  <a href="https://twitter.com/chazbvb09" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
-    <i class="fab fa-twitter" style="margin-right: 10px; font-size: 20px;"></i> Twitter
-  </a>
   <a href="https://linkedin.com/in/chazhyseni" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
     <i class="fab fa-linkedin" style="margin-right: 10px; font-size: 20px;"></i> LinkedIn
   </a>

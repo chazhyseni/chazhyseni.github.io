@@ -16,5 +16,4 @@
   * [<i class="fas fa-graduation-cap"></i> Google Scholar](https://scholar.google.com/citations?user=i-4wi1oAAAAJ ":target=_blank")
   * [<i class="fab fa-orcid"></i> ORCID](https://orcid.org/0000-0003-2567-8013 ":target=_blank")
   * [<i class="fab fa-researchgate"></i> ResearchGate](https://www.researchgate.net/profile/Chaz_Hyseni ":target=_blank")
-  * [<i class="fab fa-twitter"></i> Twitter](https://twitter.com/chazbvb09 ":target=_blank")
   * [<i class="fab fa-linkedin"></i> LinkedIn](https://linkedin.com/in/chazhyseni ":target=_blank")
