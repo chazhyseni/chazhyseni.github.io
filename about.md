@@ -21,11 +21,11 @@
 
 ## Research Overview
 
-My current research involves figuring out the genetic underpinnings of phenotypic differences across vertebrates (as part of the de-extinction mission of Colossal Biosciences). As part of my arsenal of tools, I use AI/ML and statistical modeling, including training of large language models adapted for DNA. 
+My current research involves figuring out the genetic underpinnings of phenotypic differences across vertebrates (as part of the de-extinction mission of Colossal Biosciences). I use AI/ML and statistical modeling, including training of large language models adapted for DNA, as an integral part of my research, which focuses on genes as well regulatory elements.
 
-I am an evolutionary biologist and population geneticist with extensive experience in molecular techniques and statistical analyses, including next-generation sequencing and bioinformatics. I use a multi-disciplinary approach to address questions in ecology and evolution, by adapting methods from spatial and multivariate statistics, as well as machine learning.
+By training, I am an evolutionary biologist and population geneticist with extensive experience in molecular techniques and statistical analyses, including next-generation sequencing and bioinformatics. I use a multi-disciplinary approach to address questions in ecology and evolution, by adapting methods from spatial and multivariate statistics, as well as machine learning.
 
-I use both empirical data and spatial eco-evolutionary modeling to understand the distribution of genetic variation in natural environments. The modeling component involves new ways to assess the role spatial heterogeneity of environments plays in generating genetic variation and biological diversity at multiple levels of organization, from alleles to communities.
+I have used both empirical data and spatial eco-evolutionary modeling to understand the distribution of genetic variation in natural environments. The modeling component involves new ways to assess the role spatial heterogeneity of environments plays in generating genetic variation and biological diversity at multiple levels of organization, from alleles to communities.
 
 **Timescales of evolution** is a unifying theme of my research. At the historical timescale, I have examined geographic and environmental influences on changes in DNA sequence. At the contemporary timescale, I have investigated how epigenetic mechanisms--specifically, DNA methylation--facilitate rapid responses to human-mediated disturbance, both in forest and urban environments.
 
