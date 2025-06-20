@@ -6,10 +6,9 @@
   </div>
   <div>
     <h2 style="margin-top: 0;">Chaz Hyseni, Ph.D.</h2>
-    <p><strong>ORISE Postdoctoral Fellow</strong><br>
-    U.S. Forest Service<br>
-    Aquatic Conservation & Ecology<br>
-    Oxford, Mississippi, USA</p>
+    <p><strong>Senior Computational Scientist</strong><br>
+    Colossal Biosciences<br>
+    Dallas, TX</p>
     <p>
       <a href="mailto:chaz.hyseni@gmail.com">📧 Email</a> | 
       <a href="https://github.com/chazhyseni">💻 GitHub</a> | 

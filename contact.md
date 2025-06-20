@@ -6,10 +6,8 @@
   <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:chaz.hyseni@gmail.com">chaz.hyseni@gmail.com</a></p>
   
   <p><i class="fas fa-map-marker-alt"></i> <strong>Office Address:</strong><br>
-  Aquatic Conservation and Ecology<br>
-  U.S. Forest Service<br>
-  1000 Front St<br>
-  Oxford, MS 38655, USA</p>
+  Colossal Biosciences<br>
+  Dallas, TX</p>
 </div>
 
 ## Online Presence
