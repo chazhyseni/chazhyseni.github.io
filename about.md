@@ -14,6 +14,7 @@
       <a href="https://github.com/chazhyseni">💻 GitHub</a> | 
       <a href="https://scholar.google.com/citations?user=i-4wi1oAAAAJ">📚 Google Scholar</a> |
       <a href="https://orcid.org/0000-0003-2567-8013">🆔 ORCID</a> |
+      <a href="https://www.researchgate.net/profile/Chaz_Hyseni"><i class="fab fa-researchgate"></i> ResearchGate</a> |
       <a href="files/cv.pdf">📄 CV</a>
     </p>
   </div>
