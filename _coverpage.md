@@ -1,16 +1,9 @@
-## <div style="text-align: center;">
-##  <img src="img/avatar.jpg" alt="Chaz Hyseni" style="width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
-## </div>
-
-## ![logo](img/SpEcEvGen.png ':size=200')
-
 # Chaz Hyseni, Ph.D. {docsify-ignore}
 
 > Spatial Eco-Evolutionary Genetics
 
-> ORISE Postdoctoral Fellow  
-> U.S. Forest Service  
-> Aquatic Conservation & Ecology
+> Senior Computational Scientist  
+> Colossal Biosciences
 
 <div style="margin: 30px 0;">
   <a href="mailto:chaz.hyseni@gmail.com" style="margin: 0 10px;">📧 Email</a>
