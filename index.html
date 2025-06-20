@@ -1,17 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chaz Hyseni</title>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <meta charset="UTF-8">
+  <title>Chaz Hyseni | Spatial Eco-Evolutionary Genetics</title>
+  <meta name="description" content="Evolutionary biologist and population geneticist specializing in spatial eco-evolutionary genetics">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <style>
+    :root {
+      --theme-color: #1B5E20;
+      --cover-background-color: #f5f5f5;
+      --cover-heading-color: #1B5E20;
+      --base-font-family: Georgia, serif;
+      --heading-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --search-input-background-color: #fff;
+      --search-input-border-color: #ddd;
+    }
+    .cover-main img {
+      width: 300px;
+      margin-bottom: 2rem;
+    }
+    .sidebar ul li a {
+      font-size: 16px;
+    }
+    .markdown-section {
+      max-width: 900px;
+    }
+    .app-name {
+      font-weight: 700;
+    }
+    /* Style for search box */
+    .search {
+      border-bottom: 1px solid #eee !important;
+    }
+    .search input {
+      padding: 7px 12px;
+      width: 100%;
+    }
+    /* Icon styles */
+    .sidebar ul li a i,
+    .sidebar ul li a .fa,
+    .sidebar ul li a .fab,
+    .sidebar ul li a .fas,
+    .sidebar ul li a .far {
+      margin-right: 8px;
+      width: 16px;
+      display: inline-block;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div id="app">Loading...</div>
   <script>
     window.$docsify = {
       name: 'Chaz Hyseni',
-      repo: 'https://github.com/chazhyseni'
+      repo: 'https://github.com/chazhyseni',
+      coverpage: true,
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'about.md',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Type to search',
+        noData: 'No Results!',
+        depth: 6,
+        hideOtherSidebarContent: false,
+        namespace: 'website-1'
+      },
+      themeable: {
+        readyTransition: true,
+        responsiveTables: true
+      },
+      tabs: {
+        persist: true,
+        sync: true,
+        theme: 'material',
+        tabComments: true,
+        tabHeadings: true
+      },
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true
+      }
     }
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify"></script>
+  <!-- Docsify core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <!-- Search plugin - MUST come after docsify core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- Theme -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+  <!-- Other plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- Prism syntax highlighting -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-r.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
 </body>
 </html>
