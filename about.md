@@ -21,6 +21,8 @@
 
 ## Research Overview
 
+My current research involves figuring out the genetic underpinnings of phenotypic differences across vertebrates (as part of the de-extinction mission of Colossal Biosciences). As part of my arsenal of tools, I use AI/ML and statistical modeling, including training of large language models adapted for DNA. 
+
 I am an evolutionary biologist and population geneticist with extensive experience in molecular techniques and statistical analyses, including next-generation sequencing and bioinformatics. I use a multi-disciplinary approach to address questions in ecology and evolution, by adapting methods from spatial and multivariate statistics, as well as machine learning.
 
 I use both empirical data and spatial eco-evolutionary modeling to understand the distribution of genetic variation in natural environments. The modeling component involves new ways to assess the role spatial heterogeneity of environments plays in generating genetic variation and biological diversity at multiple levels of organization, from alleles to communities.
@@ -48,4 +50,7 @@ I started my Ph.D. journey in 2012, by enrolling in the Natural Resources progra
 
 For my first postdoctoral position, I moved back to Europe, and lived for a year in Sweden. I worked with Profs. [Frank Johansson](https://katalog.uu.se/profile/?id=N11-702) and [Jacob Höglund](https://katalog.uu.se/profile/?id=XX3226) in the Department of Ecology and Genetics at Uppsala University. There, I did research on the influence of [urban environments and landscape connectivity](https://github.com/chazhyseni/pond_conn) on aquatic invertebrate biodiversity in urban ponds, as well as (epi-)genetic variation within species.
 
-As of August 2021, I am an [Oak Ridge Institute for Science and Education (ORISE)](https://orise.orau.gov/) postdoctoral fellow at the U.S. Forest Service, where I work with [Dr. Susan Adams](https://www.srs.fs.usda.gov/staff/sadams01) as part of the Aquatic Conservation and Ecology team. This work entails spatial and temporal modeling of stream temperatures aimed at disentangling effects of climate change on diversity of [crayfish communities in Mississippi streams](https://www.srs.fs.usda.gov/crayfish/).
+From 2021-2022, I was an [Oak Ridge Institute for Science and Education (ORISE)](https://orise.orau.gov/) postdoctoral fellow at the U.S. Forest Service, where I worked with [Dr. Susan Adams](https://www.srs.fs.usda.gov/staff/sadams01) as part of the Aquatic Conservation and Ecology team. This work entails spatial and temporal modeling of stream temperatures aimed at disentangling effects of climate change on diversity of [crayfish communities in Mississippi streams](https://www.srs.fs.usda.gov/crayfish/).
+
+Since 2023, my research has been at the intersection of evolutionary biology and AI, in order to uncover genotype-phenotype associations with the goal of supporting the mission of Colossal Biosciences to de-extinc the woolly mammoth, the thylacine, and other extinct vertebrates.
+
