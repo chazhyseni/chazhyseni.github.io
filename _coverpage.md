@@ -2,7 +2,7 @@
   <img src="img/avatar.jpg" alt="Chaz Hyseni" style="width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 20px;">
 </div>
 
-![logo](img/SpEcEvGen.png ':size=300')
+![logo](img/SpEcEvGen.png ':size=200')
 
 # Chaz Hyseni, Ph.D. {docsify-ignore}
 
