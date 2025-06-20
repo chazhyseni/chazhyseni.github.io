@@ -19,8 +19,8 @@
       --search-input-background-color: #fff;
       --search-input-border-color: #ddd;
     }
-    .cover-main img {
-      width: 300px;
+    .cover-main img { 
+      width: 300px; 
       margin-bottom: 2rem;
     }
     .sidebar ul li a {
@@ -50,6 +50,20 @@
       width: 16px;
       display: inline-block;
       text-align: center;
+    }
+    /* Profile section styles */
+    .profile-section {
+      display: flex;
+      align-items: start;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 768px) {
+      .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
     }
   </style>
 </head>
