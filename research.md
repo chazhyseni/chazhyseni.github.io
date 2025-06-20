@@ -2,21 +2,23 @@
 
 ## Overview
 
-My research focuses on understanding how spatial and temporal environmental heterogeneity shapes genetic variation and biological diversity across multiple levels of organization, from alleles to communities.
+My research focuses on understanding how spatial and temporal environmental heterogeneity shapes genetic and phenotypic variation, and biological diversity across multiple levels of organization, from alleles to communities.
 
 ## Current Research
 
-### Stream Temperature Modeling and Freshwater Biodiversity
-As an ORISE Postdoctoral Fellow at the U.S. Forest Service, I'm developing spatial and temporal models of stream temperatures to understand climate change impacts on crayfish community diversity in Mississippi streams. This work involves:
-- High-resolution temperature monitoring
-- Species distribution modeling
-- Climate change vulnerability assessments
-- Conservation planning for freshwater ecosystems
+### AI/ML and Genotype-Phenotype Associations
+Using AI/ML and statistical modeling (including large language models adapted for DNA) to shed light on the genetic underpinnings of phenotypic differences across vertebrates. 
 
 ## Research Themes
 
 ### Spatial Eco-Evolutionary Genetics
 Integration of spatial statistics, landscape genetics, and evolutionary biology to understand how geographic and environmental factors influence genetic variation patterns.
+
+### Epigenetics and Rapid Evolution
+Examining how epigenetic mechanisms, particularly DNA methylation, enable rapid organismal responses to environmental change in both natural and human-modified landscapes.
+
+### Phylogeography and Historical Biogeography
+Using genetic data to reconstruct species' evolutionary histories and understand how past climate changes have shaped current biodiversity patterns.
 
 ### Urban Ecology and Conservation
 Investigating how urbanization affects biodiversity at genetic and community levels, with focus on:
@@ -25,11 +27,11 @@ Investigating how urbanization affects biodiversity at genetic and community lev
 - Urban pond ecosystems
 - Environmental DNA applications
 
-### Epigenetics and Rapid Evolution
-Examining how epigenetic mechanisms, particularly DNA methylation, enable rapid organismal responses to environmental change in both natural and human-modified landscapes.
-
-### Phylogeography and Historical Biogeography
-Using genetic data to reconstruct species' evolutionary histories and understand how past climate changes have shaped current biodiversity patterns.
+### Environmental Modeling and Biodiversity
+Developing spatial and temporal environmental models to understand climate change impacts on genetic variation and biological diversity, including:
+- Species distribution modeling
+- Climate change vulnerability assessments
+- Conservation planning for terrestrial and freshwater ecosystems
 
 ## Methodological Expertise
 

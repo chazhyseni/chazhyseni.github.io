@@ -14,8 +14,7 @@
       <a href="https://github.com/chazhyseni">💻 GitHub</a> | 
       <a href="https://scholar.google.com/citations?user=i-4wi1oAAAAJ">📚 Google Scholar</a> |
       <a href="https://orcid.org/0000-0003-2567-8013">🆔 ORCID</a> |
-      <a href="https://www.researchgate.net/profile/Chaz_Hyseni"><i class="fab fa-researchgate"></i> ResearchGate</a> |
-      <a href="files/cv.pdf">📄 CV</a>
+      <a href="https://www.researchgate.net/profile/Chaz_Hyseni"><i class="fab fa-researchgate"></i> ResearchGate</a>
     </p>
   </div>
 </div>
@@ -41,7 +40,6 @@ I use both empirical data and spatial eco-evolutionary modeling to understand th
 
 
 ## Biography
-# Biography
 
 I was born in Germany in 1980, and moved to Kosovo in 1985, where I graduated from high school in 1999. After the [war in Kosovo](https://en.wikipedia.org/wiki/Kosovo_War), I worked for three years as an interpreter for the United Nations Mission in Kosovo.
 
@@ -53,5 +51,5 @@ For my first postdoctoral position, I moved back to Europe, and lived for a year
 
 From 2021-2022, I was an [Oak Ridge Institute for Science and Education (ORISE)](https://orise.orau.gov/) postdoctoral fellow at the U.S. Forest Service, where I worked with [Dr. Susan Adams](https://www.srs.fs.usda.gov/staff/sadams01) as part of the Aquatic Conservation and Ecology team. This work entails spatial and temporal modeling of stream temperatures aimed at disentangling effects of climate change on diversity of [crayfish communities in Mississippi streams](https://www.srs.fs.usda.gov/crayfish/).
 
-Since 2023, my research has been at the intersection of evolutionary biology and AI, in order to uncover genotype-phenotype associations with the goal of supporting the mission of Colossal Biosciences to de-extinc the woolly mammoth, the thylacine, and other extinct vertebrates.
+Since 2023, my research has been at the intersection of evolutionary biology and AI, in order to uncover genotype-phenotype associations with the goal of supporting the mission of Colossal Biosciences to de-extinct the woolly mammoth, the thylacine, and other extinct vertebrates.
 

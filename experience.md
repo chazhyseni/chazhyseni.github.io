@@ -2,9 +2,13 @@
 
 ## Professional Positions
 
+### Senior Computational Scientist
+**Colossal Biosciences** | Dallas, Texas, USA  
+*Nov 2022 - Present*
+
 ### ORISE Postdoctoral Fellow
 **U.S. Forest Service** | Oxford, Mississippi, USA  
-*August 2021 - Present*
+*August 2021 - February 2023*
 
 Research:
 - Spatial and temporal modeling of stream temperatures, response to climate change, and effects on freshwater biodiversity
