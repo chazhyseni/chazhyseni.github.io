@@ -21,9 +21,9 @@
 
 ## Research Overview
 
-My current research involves figuring out the genetic underpinnings of phenotypic differences across vertebrates (as part of the de-extinction mission of Colossal Biosciences). I use AI/ML and statistical modeling, including training of large language models adapted for DNA, as an integral part of my research, which focuses on genes as well regulatory elements.
+My current research is focused on determining the genetic underpinnings of phenotypic evolution across vertebrates (as part of the de-extinction mission of Colossal Biosciences). I use AI/ML and statistical modeling, including training of large language models adapted for DNA, as an integral part of my research, which focuses on genes as well regulatory elements.
 
-By training, I am an evolutionary biologist and population geneticist with extensive experience in molecular techniques and statistical analyses, including next-generation sequencing and bioinformatics. I use a multi-disciplinary approach to address questions in ecology and evolution, by adapting methods from spatial and multivariate statistics, as well as machine learning.
+I am an evolutionary biologist and population geneticist with extensive experience in molecular techniques and statistical analyses, including next-generation sequencing and bioinformatics. I use a multi-disciplinary approach to address questions in ecology and evolution, by adapting methods from spatial and multivariate statistics, as well as machine learning.
 
 I have used both empirical data and spatial eco-evolutionary modeling to understand the distribution of genetic variation in natural environments. The modeling component involves new ways to assess the role spatial heterogeneity of environments plays in generating genetic variation and biological diversity at multiple levels of organization, from alleles to communities.
 
@@ -51,5 +51,5 @@ For my first postdoctoral position, I moved back to Europe, and lived for a year
 
 From 2021-2022, I was an [Oak Ridge Institute for Science and Education (ORISE)](https://orise.orau.gov/) postdoctoral fellow at the U.S. Forest Service, where I worked with [Dr. Susan Adams](https://www.srs.fs.usda.gov/staff/sadams01) as part of the Aquatic Conservation and Ecology team. This work entails spatial and temporal modeling of stream temperatures aimed at disentangling effects of climate change on diversity of [crayfish communities in Mississippi streams](https://www.srs.fs.usda.gov/crayfish/).
 
-Since 2023, my research has been at the intersection of evolutionary biology and AI, in order to uncover genotype-phenotype associations with the goal of supporting the mission of Colossal Biosciences to de-extinct the woolly mammoth, the thylacine, and other extinct vertebrates.
+Since 2023, I have been working at Colossal Biosciences, supporting de-extinction projects, including the woolly mammoth and the thylacine. In my role as Senior Computational Scientist, I have been conducting research at the intersection of evolutionary biology and AI, in order to uncover genotype-phenotype associations.
 
