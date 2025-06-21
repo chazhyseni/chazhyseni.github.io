@@ -8,9 +8,9 @@
 
 = Equal Contribution
 
-38\. Yeserin Yildirim., **Chaz Hyseni**, Jani Heino, Luis Mauricio Bini, Jacob Höglund, Frank Johansson. [Landscape connectivity and genetic structure of animal populations in urban ponds.](https://doi.org/10.1007/s10592-025-01697-z) *Conservation Genetics*, 2025. [PDF](publications/Yildirimetal2025.pdf)
+38\. Yeserin Yildirim., **Chaz Hyseni**, Jani Heino, Luis Mauricio Bini, Jacob Hoglund, Frank Johansson. [Landscape connectivity and genetic structure of animal populations in urban ponds.](https://doi.org/10.1007/s10592-025-01697-z) *Conservation Genetics*, 2025. [PDF](publications/Yildirimetal2025.pdf)
 
-37\. Frank Johansson, Yeserin Yildirim, **Chaz Hyseni**, Jani Heino, Jacob Höglund, Luis Mauricio Bini. [Species-genetic diversity correlation in a metacommunity of urban pond invertebrates.](https://doi.org/10.1016/j.baae.2024.07.002) *Basic and Applied Ecology*, 2024. [PDF](publications/Johanssonetal2024.pdf)
+37\. Frank Johansson, Yeserin Yildirim, **Chaz Hyseni**, Jani Heino, Jacob Hoglund, Luis Mauricio Bini. [Species-genetic diversity correlation in a metacommunity of urban pond invertebrates.](https://doi.org/10.1016/j.baae.2024.07.002) *Basic and Applied Ecology*, 2024. [PDF](publications/Johanssonetal2024.pdf)
 
 36\. Gustaf Granath, **Chaz Hyseni**, Luis Mauricio Bini, Jani Heino, Jean Carlo Goncalves Ortega, Frank Johansson. [Disentangling drivers of temporal changes in urban pond macroinvertebrate diversity.](https://doi.org/10.1007/s11252-023-01500-2) *Urban Ecosystems*, 2023. [PDF](publications/Granathetal2023.pdf)
 
