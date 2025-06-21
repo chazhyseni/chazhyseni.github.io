@@ -14,5 +14,5 @@
 </div>
 
 [Get Started](#about)
-[Publications](#/publications)
+[Publications](#publications)
 [Download CV](files/cv.pdf ':ignore :target=_blank')
