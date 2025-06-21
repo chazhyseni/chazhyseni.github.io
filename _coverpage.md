@@ -13,6 +13,6 @@
   <a href="https://www.researchgate.net/profile/Chaz_Hyseni" style="margin: 0 10px;"><i class="fab fa-researchgate"></i> RG</a>
 </div>
 
-[Get Started](#about)
-[Publications](#publications)
+[Get Started](about.md)
+[Publications](publications.md)
 [Download CV](files/cv.pdf ':ignore :target=_blank')
