@@ -1,0 +1,67 @@
+# Talks & Presentations
+
+## Conference Presentations
+
+### 2023
+- **Evolution (21-25 Jun 2023, Albuquerque NM)**: *LLaMalution: using Large Language Models to unravel genotype-phenotype associations*
+
+### 2022
+- **[Evolution (24-28 Jun 2022, Cleveland OH)](https://www.xcdsystem.com/evolution/program/3plFcP3/index.cfm)**: [*Tropical-temperate gradients of species and genetic diversity across the rugged landscapes of the American Cordillera*](https://chazhyseni.github.io/talks/Cordilleras_SpecGenDiv_Presentation.pdf)
+
+- **USDA Forest Service, 68th Annual Southern Hardwood Forest Research Group Meeting (22 Mar 2022, Virtual)**: *Spatio-temporal variation in freshwater temperature shapes fish communities in Mississippi's Yazoo Basin*
+
+### 2021
+- **[Evolution (21-25 Jun 2021, Virtual)](files/virtual_evolution_2021_full_program.pdf)**: [*Linking invertebrate biodiversity and epigenetics in urban aquatic environments*](https://chazhyseni.github.io/talks/CommunityGenetics_Evolution2021_Talk_wRecording.mp4)
+
+- **Uppsala University, Department of Ecology and Genetics: Conservation Biology Seminar (11 Mar 2021, Uppsala, Sweden)**: *Multi-scale connectivity: from alleles to communities*
+
+- **Uppsala University, Department of Ecology and Genetics, Animal Ecology Program: "Revolution" Annual Research Symposium (18-19 Feb 2021, Uppsala, Sweden)**: [*Landscape connectivity shapes invertebrate biodiversity in urban ponds*](https://chazhyseni.github.io/talks/PondConnectivity_Revolution2021_Talk.pdf)
+
+### 2020
+- **Yale University Center for Genetic Analysis of Biodiversity (27 May 2020, New Haven CT)**: [*Epigenetic change in the eastern subterranean termite modulated by ecological disturbance in Appalachian forest ecosystems*](https://chazhyseni.github.io/talks/DNAmethylation_SubterraneanTermites.pdf)
+
+### 2019
+- **North American Regional Association of the International Association for Landscape Ecology: Landscape Genetics Symposium (7-11 Apr 2019, Fort Collins CO)**: [*Landscape connectivity: neutral and adaptive genetic variation across space*](https://chazhyseni.github.io/talks/IALE2019_ChazHyseni_LandGenTalk.pdf)
+
+- **University of Mississippi Graduate Student Council 9th Annual Research Symposium (26 Mar 2019, Oxford MS)**: [*Ecological drivers of subterranean termite distributions*](https://chazhyseni.github.io/talks/GSC9thSymposium2019_ChazHyseni_RetDistribTalk.pdf)
+
+### 2018
+- **[Ecological Society of America: Statistical Ecology Section (5-10 Aug 2018, New Orleans LA)](https://eco.confex.com/eco/2018/meetingapp.cgi/Paper/74161)**: *Capturing population structure and landscape connectivity by modeling neutral and adaptive genetic variation across space*
+
+- **University of Mississippi Graduate Student Council 8th Annual Research Symposium (20 Mar 2018, Oxford MS)**: *Landscape connectivity: neutral and adaptive genetic variation across space*
+
+### 2017
+- **[Entomological Society of America (4-8 Nov 2017, Denver CO)](https://esa.confex.com/esa/2017/meetingapp.cgi/Paper/125624)**: [*Evolutionary history of eastern subterranean termites: distributional shifts and postglacial expansion in the Appalachian Mountains*](https://chazhyseni.github.io/talks/Entomology2017_TermitePhylogeographyTalk_v2.pdf)
+
+- **University of Mississippi Research Showcase (31 Mar 2017, Oxford MS)**: *Inferring the eastern subterranean termite's evolutionary past: history of dispersal and habitat utilization in the Appalachians*
+
+- **LSU Museum of Natural Science Seminar Series (17 Mar 2017, Baton Rouge LA)**: *Phylogeography of the eastern subterranean termite Reticulitermes flavipes: demographic history and niche evolution in the Appalachian Mountains*
+
+- **University of Mississippi Graduate Student Council 7th Annual Research Symposium (2 Mar 2017, Oxford MS)**: *Genetic variation and geographic distribution of subterranean termites in the Appalachians*
+
+### 2010
+- **American Society of Tropical Medicine and Hygiene (3-7 Nov 2010, Atlanta GA)**: *Landscape configuration influences genetic structure of tsetse (Glossina fuscipes fuscipes) in Uganda*
+
+## Poster Presentations
+
+### 2017
+- **Entomological Society of America (4-8 Nov 2017, Denver CO)**
+- **University of Mississippi Research Showcase (31 Mar 2017, Oxford MS)**
+
+### 2016
+- **Evolution (17-21 Jun 2016, Austin TX)**
+
+### 2014
+- **Evolution (20-24 Jun 2014, Raleigh NC)**
+
+### 2011
+- **American Society of Tropical Medicine and Hygiene (4-8 Dec 2011, Philadelphia PA)** *(3 posters)*
+
+### 2010
+- **American Society of Tropical Medicine and Hygiene (3-7 Nov 2010, Atlanta GA)**
+
+### 2008
+- **American Society of Tropical Medicine and Hygiene (7-11 Dec 2008, New Orleans LA)**
+
+### 2007
+- **ConGen3: The 3rd biannual International Symposium on Conservation Genetics (27-29 Sept 2007, American Museum of Natural History, New York NY)**

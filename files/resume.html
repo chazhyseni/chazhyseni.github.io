@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaz Hyseni Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.4;
+            color: #1e293b;
+            background: #fff;
+            font-weight: 400;
+            font-size: 10pt;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info {
+            font-size: 0.9em;
+            color: #64748b;
+            font-weight: 400;
+            letter-spacing: 0.25px;
+        }
+        
+        .contact-info a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 16px;
+        }
+        
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        .summary {
+            font-size: 0.9em;
+            text-align: justify;
+            line-height: 1.5;
+            color: #374151;
+            font-weight: 400;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .job {
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        
+        .job:last-child {
+            margin-bottom: 0;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+        
+        .job-title {
+            font-weight: 600;
+            font-size: 1em;
+            color: #0f172a;
+        }
+        
+        .job-dates {
+            font-weight: 500;
+            color: #6b7280;
+            font-size: 0.85em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .company {
+            color: #64748b;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 16px;
+            text-align: justify;
+            line-height: 1.4;
+            font-weight: 400;
+            font-size: 0.9em;
+        }
+        
+        .responsibilities li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .responsibilities li:before {
+            content: "▸";
+            color: #3b82f6;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+            font-size: 1em;
+        }
+        
+        .highlight {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.95em;
+        }
+        
+        .ml-highlight {
+            background: linear-gradient(120deg, #3b82f6 0%, #8b5cf6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            font-size: 0.95em;
+            /* Fallback for browsers that don't support background-clip: text */
+            color: #3b82f6;
+        }
+        
+        /* Better support for Safari and older browsers */
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .ml-highlight {
+                color: transparent;
+            }
+        }
+        
+        .education-item {
+            margin-bottom: 12px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .degree-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+        
+        .degree {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.95em;
+        }
+        
+        .institution {
+            color: #64748b;
+            margin-bottom: 4px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        
+        .dissertation {
+            font-size: 0.85em;
+            color: #6b7280;
+            font-style: italic;
+            line-height: 1.4;
+            font-weight: 400;
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 2px solid #3b82f6;
+        }
+        
+        .skills-grid {
+            margin-top: 12px;
+        }
+        
+        .skill-category {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #3b82f6;
+            margin-bottom: 10px;
+        }
+        
+        .skill-category h4 {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 4px;
+            font-size: 0.9em;
+            display: inline;
+        }
+        
+        .skill-category p {
+            font-size: 0.85em;
+            color: #64748b;
+            line-height: 1.4;
+            display: inline;
+            margin-left: 4px;
+        }
+        
+        @media print {
+            body {
+                font-size: 9.5pt;
+                padding: 0.35in;
+            }
+            .header h1 {
+                font-size: 1.6em;
+            }
+            .section-title {
+                font-size: 1.1em;
+            }
+            .job, .education-item {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .job-header, .degree-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .job-dates {
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+    <div class="header">
+        <h1>CHAZ HYSENI</h1>
+        <div class="contact-info">
+            Dallas, TX, USA | +1-203-5082777 | <a href="mailto:chaz.hyseni@gmail.com">chaz.hyseni@gmail.com</a> | <a href="https://chazhyseni.github.io/">chazhyseni.github.io</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary">
+            I am an Evolutionary Biologist and Population Geneticist with 20 years of experience in molecular techniques and statistical analyses, with extensive application of <span class="ml-highlight">machine learning and deep learning methods</span> throughout my career. Currently Senior Computational Scientist focused on <span class="ml-highlight">AI/ML applications</span> for genotype-phenotype associations in de-extinction research. Proven expertise in training <span class="ml-highlight">large language models</span> adapted for DNA sequences, implementing <span class="ml-highlight">TensorFlow, Keras, and PyTorch</span> pipelines for regulatory element prediction, and developing novel algorithms for cross-species genomic analysis. Strong background in translating evolutionary biology questions into <span class="ml-highlight">machine learning</span> problems and deploying computational solutions for complex biological systems.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Work History</h2>
+        
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Senior Computational Scientist</span>
+                <span class="job-dates">Nov 2022 – Present</span>
+            </div>
+            <div class="company">Colossal Biosciences – Dallas, TX</div>
+            <ul class="responsibilities">
+                <li><span class="highlight">Computational De-extinction Research:</span> Determining genetic underpinnings of phenotypic evolution across vertebrates as part of de-extinction mission, applying evolutionary biology expertise to solve complex genotype-phenotype association problems</li>
+                <li><span class="highlight">AI/ML Pipeline Development:</span> Designed and deployed <span class="ml-highlight">large language models</span> adapted for DNA sequence analysis using <span class="ml-highlight">TensorFlow, Keras, and PyTorch</span>, with specialized applications to regulatory genomics and cross-species trait prediction</li>
+                <li><span class="highlight">Algorithm Innovation:</span> Developed novel computational approaches integrating evolutionary theory with <span class="ml-highlight">deep learning methods</span> for genomic feature prediction from pangenomes, including containerized deployment and GPU optimization</li>
+                <li><span class="highlight">Research Leadership:</span> Coordinating computational aspects of de-extinction research, translating evolutionary biology questions into <span class="ml-highlight">machine learning</span> frameworks, and managing cross-functional collaborations</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">ORISE Postdoctoral Fellow</span>
+                <span class="job-dates">Aug 2021 – Feb 2023</span>
+            </div>
+            <div class="company">U.S. Forest Service – Oxford, MS</div>
+            <ul class="responsibilities">
+                <li><span class="highlight">Machine Learning Applications:</span> Applied <span class="ml-highlight">Extreme Learning Machines (ELM) and physics-informed neural networks</span> for temperature modeling to assess climate change impacts on freshwater biodiversity, integrating environmental data with species distribution models</li>
+                <li><span class="highlight">Advanced Spatial Modeling:</span> Integrated <span class="ml-highlight">machine learning</span> with traditional ecological methods for climate change impact modeling on freshwater biodiversity, implementing Bayesian spatial interpolation using <span class="ml-highlight">Integrated Nested Laplace Approximation with Stochastic Partial Differential Equations</span> for uncertainty quantification</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Postdoctoral Researcher</span>
+                <span class="job-dates">Aug 2020 – Aug 2021</span>
+            </div>
+            <div class="company">Uppsala University – Uppsala, Sweden</div>
+            <ul class="responsibilities">
+                <li>Performed genomic library preparation, integration and analysis of genetic and epigenetic data</li>
+                <li>Applied <span class="ml-highlight">machine learning and Bayesian statistics</span> (R and Python) to study urban environmental effects on genetic variation and DNA methylation in invertebrate populations</li>
+                <li>Implemented <span class="ml-highlight">genetic algorithms for optimization of resistance surfaces</span> in connectivity modeling, utilizing circuit theory-based approaches and omnidirectional connectivity analysis to map landscape corridors enabling species movement and population connectivity</li>
+                <li>Investigated community genetics and connectivity patterns in urban pond metacommunities using <span class="ml-highlight">spatial optimization algorithms</span> and resistance-based modeling frameworks</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Graduate Research Scientist</span>
+                <span class="job-dates">Jan 2014 – May 2020</span>
+            </div>
+            <div class="company">University of Mississippi – Oxford, MS</div>
+            <ul class="responsibilities">
+                <li>Designed molecular protocols and analytical workflows for genetic and epigenetic data integration</li>
+                <li>Applied R and Python for spatial genetic analyses using <span class="ml-highlight">machine learning and Bayesian statistics</span> to analyze environmental influences on DNA methylation</li>
+                <li>Implemented <span class="ml-highlight">Random Forest, XGBoost, and neural networks</span> for environmental modeling of biodiversity patterns and habitat suitability across landscape gradients</li>
+                <li>Developed novel metrics for functional landscape connectivity across multiple organizational scales using <span class="ml-highlight">spatial modeling</span> approaches</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Graduate Research Assistant</span>
+                <span class="job-dates">Aug 2012 – Aug 2013</span>
+            </div>
+            <div class="company">Cornell University – Ithaca, NY</div>
+            <ul class="responsibilities">
+                <li>Conducted eastern oyster conservation research analyzing spatio-temporal genetic variation and gene-environment associations</li>
+                <li>Performed genomic library preparation and optimized bioinformatic pipelines for genomic data analysis</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Research Assistant</span>
+                <span class="job-dates">Jun 2007 – Aug 2012</span>
+            </div>
+            <div class="company">Yale University – New Haven, CT</div>
+            <ul class="responsibilities">
+                <li>Performed molecular work and statistical analyses on two major projects: 1) Galápagos giant tortoise conservation genetics (phylogeography, speciation, hybridization), and 2) spatial and temporal patterns of genetic variation in disease vectors (tsetse) using <span class="ml-highlight">Bayesian spatial modeling</span> approaches</li>
+                <li>Used R, Python, Linux, and Unix to write data analysis scripts and run bioinformatic pipelines, implementing <span class="ml-highlight">Integrated Nested Laplace Approximation with Stochastic Partial Differential Equations</span> for spatial analysis</li>
+                <li>Trained staff and students in molecular techniques and data analysis at the DNA Analysis Facility</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="education-item">
+            <div class="degree-header">
+                <span class="degree">Ph.D.: Biological Science</span>
+                <span class="job-dates">2014 – 2020</span>
+            </div>
+            <div class="institution">University of Mississippi - Oxford, MS</div>
+            <div class="dissertation">Dissertation: Evolutionary history of subterranean termites in the geographic and ecological context of the Appalachian Mountains in the United States</div>
+        </div>
+
+        <div class="education-item">
+            <div class="degree-header">
+                <span class="degree">B.A.: Environmental Studies</span>
+                <span class="job-dates">2002 – 2007</span>
+            </div>
+            <div class="institution">Yale University - New Haven, CT</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Core Biology</h4>
+                <p>Evolutionary biology, population genetics, molecular techniques, next-generation sequencing, bioinformatics, phylogeography</p>
+            </div>
+            <div class="skill-category">
+                <h4>Machine Learning & AI</h4>
+                <p>TensorFlow, Keras, PyTorch, large language models for DNA sequences, Random Forest, XGBoost, neural networks, Extreme Learning Machines, physics-informed neural networks, deep learning pipelines, genetic algorithms for spatial optimization</p>
+            </div>
+            <div class="skill-category">
+                <h4>Programming & Statistics</h4>
+                <p>Python, R, Linux/Unix, spatial statistics, Bayesian inference, Integrated Nested Laplace Approximation with Stochastic PDEs, multivariate analysis, circuit theory-based connectivity modeling</p>
+            </div>
+            <div class="skill-category">
+                <h4>Research Leadership</h4>
+                <p>Cross-disciplinary coordination, algorithm development, computational pipeline design, team management</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
