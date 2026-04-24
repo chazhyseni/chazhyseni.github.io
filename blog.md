@@ -123,7 +123,7 @@ Events go to `~/.claude/skills/learned/events/`. At session end, a consolidation
 
 **Current status:** Hook is installed and firing. Consolidation pipeline exists. Event volume is low because it requires real-session usage to trigger.
 
-### 2. Batch Pipeline (ALMA-inspired, SOTA v3)
+### 2. Batch Pipeline (ALMA-inspired)
 
 For bulk distillation from conversation history, a 4-stage pipeline extracts recurring patterns:
 
@@ -136,7 +136,7 @@ For bulk distillation from conversation history, a 4-stage pipeline extracts rec
 
 **The quality gates remain aggressive:** empty, generic, or single-project patterns get rejected. The pipeline catches nuanced feedback that previously slipped through — "that won't work because...", "I meant...", "can you instead..." — and clusters them semantically even when wording differs.
 
-**Current output:** The pipeline produces 5–8 high-signal skills per run from ~4,500 corrections. Yield is intentionally conservative (precision over recall), but extraction breadth and clustering accuracy have improved substantially with the v3 rewrite. End-to-end runtime is ~3 minutes with parallel LLM distillation.
+**Current output:** The pipeline produces 5–8 high-signal skills per run from ~4,500 corrections. Yield is intentionally conservative (precision over recall), but extraction breadth and clustering accuracy have improved substantially. End-to-end runtime is ~3 minutes with parallel LLM distillation.
 
 Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `SKILL.md` format. `sync-learned-skills.sh` propagates them to all harnesses.
 
@@ -154,7 +154,7 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 
 ## Known Gaps
 
-- **Generated skill quality has cosmetic rough edges.** LLM distillation occasionally produces double periods, awkward phrasing ("Avoid prioritize" instead of "Prioritize"), and default confidence scores of 0.50. The skills are functional — they load and fire correctly — but the prompt engineering needs refinement for consistent polish.
+- **Generated skill quality has minor cosmetic issues.** The LLM distillation prompt instructs complete sentences ending with periods, but the SKILL.md renderer unconditionally appends another period to the condition field, producing double periods in some outputs. The `_build_description` verb mapping can also produce awkward phrasing (e.g., "Avoid prioritize" when the strategy starts with a verb and the memory type is `anti_pattern`). These are rendering bugs, not skill logic issues — the skills load and fire correctly.
 - **Copilot CLI has no native SKILL.md support.** Skills must be injected via `.github/copilot-instructions.md` per repository. MCP servers (memory, codesight, etc.) work globally, but the skill library itself is unavailable there.
 - **Pipeline is batch-speed by design.** ~3 minutes end-to-end is acceptable for a daily cron job, but real-time feedback during a session would require caching distilled outputs by correction hash.
 
