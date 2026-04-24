@@ -152,11 +152,17 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 
 ---
 
-## Known Gaps
+## What's Live vs. What's Next
 
-- **Generated skill quality has minor cosmetic issues.** The LLM distillation prompt instructs complete sentences ending with periods, but the SKILL.md renderer unconditionally appends another period to the condition field, producing double periods in some outputs. The `_build_description` verb mapping can also produce awkward phrasing (e.g., "Avoid prioritize" when the strategy starts with a verb and the memory type is `anti_pattern`). These are rendering bugs, not skill logic issues — the skills load and fire correctly.
-- **Copilot CLI has no native SKILL.md support.** Skills must be injected via `.github/copilot-instructions.md` per repository. MCP servers (memory, codesight, etc.) work globally, but the skill library itself is unavailable there.
-- **Pipeline is batch-speed by design.** End-to-end runtime depends on correction volume and LLM speed, but the pipeline is designed for daily cron jobs rather than real-time feedback during a session.
+| Status | Component | What It Does Today |
+|--------|-----------|-------------------|
+| **Live** | **Static skill aggregation** | ~450 skills from 5 libraries load automatically into Claude Code, Codex, OpenClaw, and Pi. Copilot CLI receives MCP servers (memory, codesight, etc.) globally; per-repo skill injection via `.github/copilot-instructions.md` is available but not yet automated. |
+| **Live** | **MCP server suite** | 8 servers configured out of the box: memory, sequential thinking, browser automation, codebase context, documentation lookup, token optimization, knowledge graph, and Google Docs editing. |
+| **Live** | **Batch learning pipeline** | Ingests conversation history, clusters corrections by semantic similarity, distills them into structured `SKILL.md` files via local LLM, and syncs to all harnesses. Designed to run as a daily cron job. |
+| **Live** | **Real-time hook infrastructure** | `UserPromptSubmit` and `PreToolUse` hooks are installed and firing. Events are captured to `~/.claude/skills/learned/events/`; session-end consolidation script clusters them automatically. |
+| **In progress** | **Skill rendering polish** | The distillation pipeline produces valid, loadable skills. Minor cosmetic refinement is ongoing — sentence-boundary handling in the condition field and verb-mapping in descriptions. |
+| **In progress** | **Real-time volume** | The hooks capture events correctly, but meaningful learning requires sustained real-session usage. As session volume grows, the real-time path will overtake the batch pipeline as the primary learning source. |
+| **Planned** | **Copilot CLI native skills** | Currently MCP-only. Native `SKILL.md` support for Copilot CLI is planned pending Microsoft/GitHub API availability. |
 
 ---
 
@@ -167,7 +173,7 @@ Most AI agent setups are stateless by default. Without configuration, they don't
 `ai-skillweave` builds stateful harnesses in three ways:
 
 1. **Skill library** — ~450 distilled patterns load automatically. The agent doesn't guess conventions; it knows them.
-2. **MCP servers** — 10 tools extend what the agent can *do* (browse, remember, look up docs, analyze tokens, query knowledge graphs, search the web).
+2. **MCP servers** — 8 tools extend what the agent can *do* (browse, remember, look up docs, analyze tokens, query knowledge graphs, search the web).
 3. **Learning pipeline** — Corrections become skills that propagate to all harnesses. The harness improves between sessions.
 
 The result: whichever agent you choose for a task, it runs with the same loaded expertise and toolset. No re-teaching. No config drift.
