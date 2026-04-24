@@ -1,16 +1,16 @@
 # Building an Auto-Learning AI Agent Harness
 
-> **TL;DR:** `ai-skillweave` aggregates ~450 on-disk skills from 5 open-source skill libraries and delivers them natively to Claude Code, Codex, OpenClaw, Pi, and Copilot CLI. It runs 10 MCP servers for Claude Code — 8 for Copilot CLI — (memory, sequential thinking, browser automation, codebase context, docs lookup, token optimization, and more). And it learns from your corrections automatically — capturing them in real-time via hooks and distilling them into reusable skills via a 4-stage pipeline. One `./install.sh` configures everything.
+> **TL;DR:** `ai-skillweave` aggregates ~450 on-disk skills from 5 open-source skill libraries and delivers them natively to Claude Code, Codex, OpenClaw, Pi, and Copilot CLI. It configures 8 MCP servers (memory, sequential thinking, browser automation, codebase context, docs lookup, token optimization, and more). And it learns from your corrections automatically — capturing them in real-time via hooks and distilling them into reusable skills via a 4-stage pipeline. One `./install.sh` configures everything.
 
 ---
 
 ## The Problem: Every Agent Harness Is Incomplete
 
-AI agents are only as good as their context. Claude Code, Codex, OpenClaw, Pi, Copilot CLI — each ships with zero skills, zero MCP servers, and zero memory of what you taught them yesterday. You get a blank slate every session.
+AI agents are only as good as their context. Claude Code, Codex, OpenClaw, Pi, Copilot CLI — each has built-in tools, but without configuration they don't retain your corrections, domain expertise, or custom conventions across sessions. You start fresh every time.
 
 The existing workarounds don't solve this:
-- **Custom instructions** (`CLAUDE.md`) — static, manual, never updated
-- **Conversation history** — buried in JSON files the agent never reads
+- **Custom instructions** (`CLAUDE.md`) — static, manual, rarely updated
+- **Conversation history** — buried in JSON files the agent rarely reads
 - **Copy-paste prompts** — fragile, version-drifted, lost in terminal scrollback
 - **Per-agent configs** — skills you install for Claude Code don't exist for Codex or Pi
 
@@ -30,7 +30,7 @@ Before explaining the learning mechanism, let's be clear about what "skills" mea
 - **Anti-pattern** — what to avoid
 - **Tools** — which MCP tools or shell commands to use
 
-**The aggregation story:** These ~450 on-disk skills come from 5 distinct sources. No single library has this breadth. Anthropic's 17 official skills cover software engineering fundamentals. OpenAI's 44 Codex-curated skills add API design, testing, and security patterns. ECC contributes 184 community-distilled skills spanning 15+ languages, architecture, DevOps, and data science. K-Dense adds 134 scientific skills — bioinformatics pipelines, cheminformatics, proteomics, clinical research, and 100+ database integrations. ClawBio ships 56 executable Python scripts for molecular dynamics and drug discovery, not just text prompts. **This is the only system that combines all of them.**
+**The aggregation story:** These ~450 on-disk skills come from 5 distinct sources. No single library has this breadth. Anthropic's 17 official skills cover software engineering fundamentals. OpenAI's 44 Codex-curated skills add API design, testing, and security patterns. ECC contributes 184 community-distilled skills spanning 15+ languages, architecture, DevOps, and data science. K-Dense adds 134 scientific skills — bioinformatics pipelines, cheminformatics, proteomics, clinical research, and 100+ database integrations. ClawBio ships 56 executable Python scripts for molecular dynamics and drug discovery, not just text prompts. **No single library has this breadth on its own.**
 
 Having this loaded into the system prompt means the agent doesn't guess your conventions — it already knows them. Here's what that looks like in practice:
 
@@ -66,9 +66,9 @@ Skills and MCP servers aren't theoretical conveniences. They change what the age
 
 ---
 
-## The 10 MCP Servers: What They Actually Do
+## The 8 MCP Servers: What They Actually Do
 
-MCP servers are tools the agent can call. Most agent setups have zero. `ai-skillweave` configures 10 for Claude Code out of the box (8 for Copilot CLI):
+MCP servers extend what the agent can do beyond its built-in tools. `ai-skillweave` configures 8 for Claude Code and Copilot CLI out of the box:
 
 | Server | What It Does | When You Need It |
 |--------|-------------|------------------|
@@ -93,13 +93,13 @@ Every skill library was built for one harness. `ai-skillweave` extends them to l
 
 | Harness | Skills | Mechanism |
 |---------|--------|-----------|
-| **Claude Code** | 385 native + combined cache | `~/.claude/skills/` SKILL.md dirs + `--append-system-prompt-file` for cache |
-| **OpenClaw** | 456 skill directories | `~/.openclaw/workspace/skills/` (YAML frontmatter sanitized) |
-| **Codex** | 401 skill directories | `~/.codex/skills/` (YAML frontmatter sanitized) |
-| **Pi** | 455 skill directories | `~/.pi/agent/skills/` (symlinked from ECC) |
+| **Claude Code** | ~450 native + combined cache | `~/.claude/skills/` SKILL.md dirs + `--append-system-prompt-file` for cache |
+| **OpenClaw** | ~450 skill directories | `~/.openclaw/workspace/skills/` (YAML frontmatter sanitized) |
+| **Codex** | ~450 skill directories | `~/.codex/skills/` (YAML frontmatter sanitized) |
+| **Pi** | ~450 skill directories | `~/.pi/agent/skills/` (symlinked from ECC) |
 | **Copilot CLI** | MCP servers only | `~/.copilot/mcp-config.json` — no native SKILL.md support yet |
 
-**One `./install.sh`** sets up all five harnesses. **`./safe-install.sh`** does a zero-risk reinstall. **`update-ecc.sh`** pulls upstream skill library updates and rebuilds caches without touching your configs.
+**One `./install.sh`** sets up all five harnesses. **`./safe-install.sh`** does a safer reinstall (backs up configs first). **`update-ecc.sh`** pulls upstream skill library updates and rebuilds caches without touching your configs.
 
 **The key insight:** When you correct Claude Code on a pattern, that learned skill propagates to OpenClaw, Codex, and Pi automatically. You don't re-teach each agent. The correction becomes institutional knowledge.
 
@@ -136,7 +136,7 @@ For bulk distillation from conversation history, a 4-stage pipeline extracts rec
 
 **The quality gates remain aggressive:** empty, generic, or single-project patterns get rejected. The pipeline catches nuanced feedback that previously slipped through — "that won't work because...", "I meant...", "can you instead..." — and clusters them semantically even when wording differs.
 
-**Current output:** The pipeline produces 5–8 high-signal skills per run from ~4,500 corrections. Yield is intentionally conservative (precision over recall), but extraction breadth and clustering accuracy have improved substantially. End-to-end runtime is ~3 minutes with parallel LLM distillation.
+**Current output:** The pipeline produces 5–8 high-signal skills per run from ~3,000 corrections. Yield is intentionally conservative (precision over recall), but extraction breadth and clustering accuracy have improved substantially.
 
 Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `SKILL.md` format. `sync-learned-skills.sh` propagates them to all harnesses.
 
@@ -156,13 +156,13 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 
 - **Generated skill quality has minor cosmetic issues.** The LLM distillation prompt instructs complete sentences ending with periods, but the SKILL.md renderer unconditionally appends another period to the condition field, producing double periods in some outputs. The `_build_description` verb mapping can also produce awkward phrasing (e.g., "Avoid prioritize" when the strategy starts with a verb and the memory type is `anti_pattern`). These are rendering bugs, not skill logic issues — the skills load and fire correctly.
 - **Copilot CLI has no native SKILL.md support.** Skills must be injected via `.github/copilot-instructions.md` per repository. MCP servers (memory, codesight, etc.) work globally, but the skill library itself is unavailable there.
-- **Pipeline is batch-speed by design.** ~3 minutes end-to-end is acceptable for a daily cron job, but real-time feedback during a session would require caching distilled outputs by correction hash.
+- **Pipeline is batch-speed by design.** End-to-end runtime depends on correction volume and LLM speed, but the pipeline is designed for daily cron jobs rather than real-time feedback during a session.
 
 ---
 
 ## Why This Matters
 
-Most AI agent setups are stateless. You start fresh every session. The agent has no memory of what worked, no access to domain expertise, and no tools beyond its training cutoff.
+Most AI agent setups are stateless by default. Without configuration, they don't retain your corrections, domain expertise, or custom conventions across sessions.
 
 `ai-skillweave` builds stateful harnesses in three ways:
 
