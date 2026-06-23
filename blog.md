@@ -84,9 +84,9 @@ Skills and MCP servers aren't theoretical conveniences. They change what the age
 
 ---
 
-## The 10 MCP Servers: What They Actually Do
+## The 8 MCP Servers: What They Actually Do
 
-MCP servers extend what the agent can do beyond its built-in tools. `ai-skillweave` configures 10 for Claude Code and Copilot CLI out of the box:
+MCP servers extend what the agent can do beyond its built-in tools. `ai-skillweave` configures 8 for Claude Code and Copilot CLI out of the box:
 
 | Server | What It Does | When You Need It |
 |--------|-------------|------------------|
@@ -98,8 +98,8 @@ MCP servers extend what the agent can do beyond its built-in tools. `ai-skillwea
 | **token-optimizer** | Analyzes prompt/token usage and suggests compression | You're hitting context limits on large codebases |
 | **codesight** | Generates structured codebase context maps (routes, schema, deps) | Agent starts work in an unfamiliar repo |
 | **skillgraph** | Knowledge graph of bioinformatics skills with pipeline paths | Bioinformatics questions requiring pipeline reasoning |
-| **github** | GitHub API integration — issues, PRs, repos, search | GitHub operations without leaving the terminal |
-| **exa-web-search** | Neural web search with structured results | Finding papers, docs, or recent releases not in training data |
+
+The config also ships two **opt-in templates** for `github` (issues/PRs/repos) and `exa-web-search` (neural web search). They need API keys — uncomment the `_api_key_servers_commented` block in `configs/claude-mcp-servers.json` and re-run `scripts/setup-mcp.sh` to enable either.
 
 The **codesight** integration is worth highlighting separately. When Claude Code starts in any repo, a PreToolUse hook checks if the agent is about to do a broad `grep` or `glob` search. Instead of expensive recursive scanning, it calls `codesight --mcp` to get a structured map of routes, database schema, components, and dependencies. The agent gets context instantly instead of burning tokens exploring files.
 
@@ -180,7 +180,7 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 | Status | Component | What It Does Today |
 |--------|-----------|-------------------|
 | **Live** | **Static skill aggregation** | 2,652 skills from 14 libraries load automatically into Claude Code, Codex, OpenClaw, Pi, Copilot, and Hermes. Each harness gets the full pool; delivery format is the only thing that differs. |
-| **Live** | **MCP server suite** | 10 servers configured out of the box: memory, sequential thinking, browser automation, codebase context, documentation lookup, token optimization, knowledge graph, Google Docs editing, GitHub, and neural web search. |
+| **Live** | **MCP server suite** | 8 servers configured out of the box: memory, sequential thinking, browser automation, codebase context, documentation lookup, token optimization, knowledge graph, and Google Docs editing. Two more (GitHub, exa-web-search) ship as opt-in templates in the config. |
 | **Live** | **Batch learning pipeline** | Ingests conversation history, clusters corrections by semantic similarity, distills them into structured `SKILL.md` files via local LLM (30–50× faster than naive per-group calls), and syncs to all six harnesses. Designed to run as a daily cron job. |
 | **Live** | **Real-time hook infrastructure** | `UserPromptSubmit` and `PreToolUse` hooks are installed and firing. Events are captured to `~/.claude/skills/learned/events/`; session-end consolidation script clusters them automatically. |
 | **Live** | **Manifest-based prune** | `update-ecc.sh` reconciles installed skills against the source manifest on each run — deleted upstream skills disappear locally without manual cleanup. |
@@ -197,7 +197,7 @@ Most AI agent setups are stateless by default. Without configuration, they don't
 `ai-skillweave` builds stateful harnesses in three ways:
 
 1. **Skill library** — 2,652 distilled patterns load automatically. The agent doesn't guess conventions; it knows them.
-2. **MCP servers** — 10 tools extend what the agent can *do* (browse, remember, look up docs, analyze tokens, query knowledge graphs, search the web, work with GitHub and Google Docs).
+2. **MCP servers** — 8 tools extend what the agent can *do* (browse, remember, look up docs, analyze tokens, query knowledge graphs, edit Google Docs), plus 2 opt-in API-key templates (GitHub, web search).
 3. **Learning pipeline** — Corrections become skills that propagate to all six harnesses. The harness improves between sessions.
 
 The result: whichever agent you choose for a task, it runs with the same loaded expertise and toolset. No re-teaching. No config drift.
@@ -218,7 +218,7 @@ Configure just one harness:
 ./install.sh --only copilot     # Copilot CLI + MCP servers
 ```
 
-Then correct your agent. Watch `~/.claude/skills/learned/events/` fill up. Run `python3 scripts/consolidate-learnings.py` to see what it learned.
+Then correct your agent. Watch `~/.claude/skills/learned/events/` fill up. Run `python3 scripts/consolidate-learning.py` to see what it learned.
 
 **Repo:** [github.com/chazhyseni/ai-skillweave](https://github.com/chazhyseni/ai-skillweave)  
 **Full catalog:** [docs/SKILLS-CATALOG.md](https://github.com/chazhyseni/ai-skillweave/blob/main/docs/SKILLS-CATALOG.md)
