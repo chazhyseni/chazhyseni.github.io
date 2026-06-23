@@ -6,7 +6,7 @@
 
 ## The Problem: Every Agent Harness Is Incomplete
 
-AI agents are only as good as their context. Claude Code, Codex, OpenClaw, Pi, Copilot, Hermes — each has built-in tools, but without configuration they don't retain your corrections, domain expertise, or custom conventions across sessions. You start fresh every time.
+AI agents are only as good as their context. Claude Code, Codex, OpenClaw, Pi, Copilot, Hermes — each has built-in tools, but most are stateless by default for **corrections**. Static conventions can be persisted manually (`CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`), but agents don't learn from your feedback across sessions. "No, use absolute paths" today doesn't change behavior tomorrow.
 
 The existing workarounds don't solve this:
 - **Custom instructions** (`CLAUDE.md`) — static, manual, rarely updated
@@ -14,7 +14,7 @@ The existing workarounds don't solve this:
 - **Copy-paste prompts** — fragile, version-drifted, lost in terminal scrollback
 - **Per-agent configs** — skills you install for Claude Code don't exist for Codex or Pi
 
-None of them aggregate. None of them learn. None of them propagate.
+None of them aggregate. None of them learn from your corrections. None of them propagate.
 
 The goal isn't to use six agents simultaneously. It's to have the best possible harness — regardless of which agent you choose for a given task. Whether you prefer Claude Code for deep codebase work, Codex for rapid prototyping, or Copilot CLI for quick edits, the harness should be the same: fully loaded, context-aware, and improving over time.
 
@@ -189,7 +189,7 @@ The architecture is in place. What's left is the part that compounds with usage:
 
 ## Why This Matters
 
-Most AI agent setups are stateless by default. Without configuration, they don't retain your corrections, domain expertise, or custom conventions across sessions.
+Most AI agent setups are stateless by default for **corrections**. Static conventions can be persisted manually (CLAUDE.md, AGENTS.md, copilot-instructions.md), but agents don't learn from your feedback across sessions. "No, use absolute paths" today doesn't change behavior tomorrow.
 
 `ai-skillweave` builds stateful harnesses in three ways:
 
