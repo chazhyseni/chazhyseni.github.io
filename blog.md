@@ -192,7 +192,7 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 
 ## Why This Matters
 
-Most AI agent setups are stateless by default. Without configuration, they retain your corrections, domain expertise, or custom conventions across sessions.
+Most AI agent setups are stateless by default. Without configuration, they don't retain your corrections, domain expertise, or custom conventions across sessions.
 
 `ai-skillweave` builds stateful harnesses in three ways:
 
