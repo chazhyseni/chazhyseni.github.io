@@ -115,14 +115,14 @@ Every skill library was built for one harness. `ai-skillweave` extends them to l
 | **OpenClaw** | `~/.openclaw/workspace/skills/` (YAML frontmatter sanitized) |
 | **Codex** | `~/.codex/skills/` (YAML frontmatter sanitized) |
 | **Pi** | `~/.pi/agent/skills/` (symlinked from ECC) |
-| **Copilot CLI** | `~/.copilot/mcp-config.json` (MCP servers; native SKILL.md support pending) |
+| **Copilot CLI** | `~/.copilot/config/skills -> ~/.claude/skills` symlink + `COPILOT_SKILLS_DIRS` env var; MCP via `~/.copilot/mcp-config.json` |
 | **Hermes** | `~/.hermes/skills/ai-skillweave/` (real copies; native toolsets preserved) |
 
 **One `./install.sh`** sets up all six harnesses. **`./safe-install.sh`** does a safer reinstall (backs up configs first). **`update-ecc.sh`** pulls upstream skill library updates, runs the manifest-based prune against deleted sources, and rebuilds caches without touching your configs.
 
 **The key insight:** When you correct Claude Code on a pattern, that learned skill propagates to OpenClaw, Codex, Pi, Copilot, and Hermes automatically. You don't re-teach each agent. The correction becomes institutional knowledge across the entire harness fleet.
 
-**Copilot CLI caveat:** Copilot reads MCP servers from `~/.copilot/mcp-config.json` (memory, codesight, etc.) but does not load `SKILL.md` directories natively — it uses `.github/copilot-instructions.md` for per-repo guidance. The MCP servers alone are a major upgrade over vanilla Copilot.
+**Copilot CLI:** `scripts/setup-copilot-skills.sh` bridges Copilot to the cross-harness skill pool — a symlink at `~/.copilot/config/skills` plus the `COPILOT_SKILLS_DIRS` env var (covering `~/.claude/skills` and `~/.pi/agent/skills`). MCP servers (memory, codesight, etc.) are configured separately via `scripts/setup-copilot.sh` writing `~/.copilot/mcp-config.json`.
 
 **Hermes note:** Hermes receives the full 2,652-skill pool as real copies in its own `ai-skillweave/` category. Hermes's native toolsets and the openclaw-imports staging set are left untouched.
 
@@ -140,7 +140,7 @@ A `UserPromptSubmit` hook fires on every message and detects three signal types:
 | **Preference** | "I always want type hints" | `preference` event JSON |
 | **Pattern** | "Best practice: validate first" | `pattern` event JSON |
 
-Events go to `~/.claude/skills/learned/events/`. At session end, a consolidation script clusters similar events and writes a `SKILL.md` file with a short imperative name like `verify-output-completeness`.
+Events go to `~/.claude/skills/learned/events/`. At session end, a `Stop` hook (`hooks/session-reflection.sh`) calls `scripts/consolidate-learning.py`, which clusters similar events and writes a `SKILL.md` file with a short imperative name like `verify-output-completeness`.
 
 ### 2. Batch Pipeline
 
@@ -173,20 +173,17 @@ Both paths write to `~/.claude/skills/learned/` using the same ECC-compatible `S
 
 **Manifest-based pruning keeps state clean.** When a source repo deletes skills, `update-ecc.sh` removes the corresponding entries on next run — no orphaned skill directories piling up.
 
+**Copilot CLI ships with a native skill bridge.** `scripts/setup-copilot-skills.sh` symlinks `~/.copilot/config/skills -> ~/.claude/skills` and exports `COPILOT_SKILLS_DIRS` so the same 2,652 skills load in Copilot as in every other harness — no per-repo `copilot-instructions.md` required.
+
 ---
 
-## What's Live vs. What's Next
+## What's Next
 
-| Status | Component | What It Does Today |
-|--------|-----------|-------------------|
-| **Live** | **Static skill aggregation** | 2,652 skills from 14 libraries load automatically into Claude Code, Codex, OpenClaw, Pi, Copilot, and Hermes. Each harness gets the full pool; delivery format is the only thing that differs. |
-| **Live** | **MCP server suite** | 8 servers configured out of the box: memory, sequential thinking, browser automation, codebase context, documentation lookup, token optimization, knowledge graph, and Google Docs editing. Two more (GitHub, exa-web-search) ship as opt-in templates in the config. |
-| **Live** | **Batch learning pipeline** | Ingests conversation history, clusters corrections by semantic similarity, distills them into structured `SKILL.md` files via local LLM (30–50× faster than naive per-group calls), and syncs to all six harnesses. Designed to run as a daily cron job. |
-| **Live** | **Real-time hook infrastructure** | `UserPromptSubmit` and `PreToolUse` hooks are installed and firing. Events are captured to `~/.claude/skills/learned/events/`; session-end consolidation script clusters them automatically. |
-| **Live** | **Manifest-based prune** | `update-ecc.sh` reconciles installed skills against the source manifest on each run — deleted upstream skills disappear locally without manual cleanup. |
-| **In progress** | **Skill rendering polish** | The distillation pipeline produces valid, loadable skills. Minor cosmetic refinement is ongoing — sentence-boundary handling in the condition field and verb-mapping in descriptions. |
-| **In progress** | **Real-time volume** | The hooks capture events correctly, but meaningful learning requires sustained real-session usage. As session volume grows, the real-time path will overtake the batch pipeline as the primary learning source. |
-| **Planned** | **Copilot CLI native skills** | Currently MCP-only. Native `SKILL.md` support for Copilot CLI is planned pending Microsoft/GitHub API availability. |
+The architecture is in place. What's left is the part that compounds with usage:
+
+- **Real-time learning volume.** Both hooks are installed and firing; meaningful skill yield just needs more sessions of real corrections to feed the clusterer. As session volume grows, the real-time path becomes the dominant source of new skills.
+- **Distillation breadth.** The pipeline already catches nuanced feedback patterns (negations, clarifications, redirections). The remaining work is tightening edge cases where a high-value pattern gets rejected by a quality gate that's tuned too conservatively.
+- **More upstream sources.** Adding a new skill repo is now a one-line edit in `scripts/update-ecc.sh` plus a manifest rebuild — the integration path is solved.
 
 ---
 
