@@ -7,7 +7,7 @@
 * [<i class="fas fa-briefcase"></i> Experience](experience.md)
 * [<i class="fas fa-hands-helping"></i> Service](service.md)
 * [<i class="fas fa-pen-nib"></i> Blog](blog.md)
-  * [Local MoE Inference: litMoE](blog-litmoe.md)
+  * [Big Models, Small Machines](blog-litmoe.md)
   * [Auto-Learning Agent Harness](blog-skillweave.md)
 * [<i class="fas fa-envelope"></i> Contact](contact.md)
 * [<i class="fas fa-file-pdf"></i> Resume](files/resume.html ":ignore :target=_blank")
