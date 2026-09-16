@@ -6,6 +6,10 @@
 
 = Equal Contribution
 
+> 39. [<img src="img/publications/Gedmanetal2026_thumb.jpg" alt="Gedmanetal2026" style="height:36px;vertical-align:middle;">](https://chazhyseni.github.io/publications/Gedmanetal2026.pdf) Gregory Gedman=, Kathleen Morrill Pirovich=, Jonas Oppenheimer, **Chaz Hyseni**, Molly Cassatt-Johnstone, Alexander Lucaci, Nicolas Alexandre, William Troy, Chris Chao, Olivier Fedrigo, Savannah Hoyt, Patrick Grady, Sam Sacco, William Seligmann, Ayusman Dash, Mithil Chokshi, Laura Knecht, James Papizan, Tyler Miyawaki, Sven Bocklandt, James Kelher, Sara Ord, Shyam Gopalakrishnan, Audrey Lin, Brandon Peecook, Angela Perri, Mikkel-Holger Sinding, Greger Larson, Julie Meachen, Love Dalen, Bridgett vonHoldt, Thomas Gilbert, Christopher Mason, Rachel O'Neill, Elinor Karlsson, Brandi Cantarel, George R.R. Martin, George Church, Ben Lamm, Beth Shapiro. [**On the ancestry and evolution of the extinct dire wolf.**](https://doi.org/10.1016/j.xgen.2026.101306) *Cell Genomics*, 2026. [![PDF](https://img.icons8.com/color/24/000000/pdf.png)](https://chazhyseni.github.io/publications/Gedmanetal2026.pdf)
+
+---
+
 > 38. [<img src="img/publications/Yildirimetal2025_thumb.jpg" alt="Yildirimetal2025" style="height:36px;vertical-align:middle;">](https://chazhyseni.github.io/publications/Yildirimetal2025.pdf) Yeserin Yildirim., **Chaz Hyseni**, Jani Heino, Luis Mauricio Bini, Jacob Hoglund, Frank Johansson. [**Landscape connectivity and genetic structure of animal populations in urban ponds.**](https://doi.org/10.1007/s10592-025-01697-z) *Conservation Genetics*, 2025. [![PDF](https://img.icons8.com/color/24/000000/pdf.png)](https://chazhyseni.github.io/publications/Yildirimetal2025.pdf)
 
 ---
