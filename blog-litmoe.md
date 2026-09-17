@@ -6,7 +6,7 @@
 
 ## The interesting thing isn't that this works. It's that it works on a CPU.
 
-This afternoon Claude Code did real work against a model running on my own machine. Nothing was billed, no request hit anyone's API, and no line of the code I was working on left the building.
+This afternoon Claude Code did real work against a model running on my own machine. Nothing was billed, and every request stayed on that machine.
 
 That's possible on a CPU because of how these models are built — not because of anything new in the hardware. More on that in a moment, since it's the reason the default model in this project is what it is.
 
