@@ -34,7 +34,7 @@ Most models are *dense*: every parameter participates in producing every word. A
 
 **Mixture-of-Experts (MoE)** models are built differently. The model is split into many specialist sub-networks — "experts" — and a router picks only a handful for each word. A model can hold 26 billion parameters in total but touch only 4 billion of them per word. Those 4 billion are the *active* parameters.
 
-Your CPU only pays for what it touches. So:
+The CPU only does the work for the parameters actually used. So:
 
 > A 26B model with 4B active runs at roughly the speed of a 9B dense model — and is a far better model.
 
