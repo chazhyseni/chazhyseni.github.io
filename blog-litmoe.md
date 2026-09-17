@@ -61,13 +61,13 @@ It contains no model weights, no math, no GPU code. It starts the engines as bac
 
 ## Version one was an inference engine. It ran at 0.019 tokens per second.
 
-I originally tried to write the math myself: a from-scratch CPU implementation in C. On a 24-core server it produced **0.019 tokens per second** — 158 seconds to emit the *first* word of a four-word prompt.
+I originally tried to write the math myself: a from-scratch CPU implementation in C. On a 24-core server it produced **0.019 tokens per second**. A four-token prompt — a few words — took 158 seconds just to begin answering.
 
-The arithmetic explains it, and no amount of clever code was going to change it:
+The arithmetic explains it, and no amount of clever code was going to change it. For a 67-token prompt:
 
-- One response needed **98,496 expert lookups**.
+- The model needed **98,496 expert lookups** (67 tokens × 92 layers × 16 experts per layer).
 - Each expert is 17.55 MB of weights.
-- Even after skipping repeats, that's **~859 GB to read off disk** — 38 minutes at the disk's actual speed.
+- Even after skipping repeats, that's **~859 GB to read off disk** — 38 minutes at this disk's actual speed.
 - The CPU work alone was another 82 minutes.
 - llama.cpp ran the same model on the same machine **~45× faster**.
 
@@ -76,7 +76,7 @@ I'd already shipped hand-tuned math routines, memory-mapping tricks, and aggress
 So I deleted the engine. Three things survived:
 
 1. **A 45× gap to a mature tool on identical hardware means your approach is wrong, not the hardware.**
-2. **Measure before optimizing.** I calculated an 82-minute floor and then shipped two more rounds of "optimizations" before a stopwatch settled it.
+2. **Measure before optimizing.** I calculated an 82-minute floor and then shipped several more rounds of "optimizations" before a stopwatch settled it.
 3. **The boring integration layer was the actual product.**
 
 ---
@@ -85,7 +85,7 @@ So I deleted the engine. Three things survived:
 
 Claude Code speaks Anthropic's API. Local engines speak OpenAI's. They're similar but not compatible — different names for the same ideas, and a completely different format for streaming text as it's generated.
 
-litMoE translates in both directions, including the hard part: streaming. As your local model produces text, litMoE re-packages it on the fly into exactly the sequence of events Claude Code expects — ordinary text, tool calls, and reasoning blocks all handled separately and in the right order. Claude Code cannot tell the difference.
+litMoE translates in both directions, including the hard part: streaming. As your local model produces text, litMoE re-packages it on the fly into exactly the sequence of events Claude Code expects — ordinary text, tool calls, and reasoning blocks all handled separately and in the right order. Claude Code behaves normally throughout; the only tell is a one-line notice on startup that it doesn't recognize the model name.
 
 The part I care about more is that using it **changes nothing**:
 
@@ -126,18 +126,20 @@ Then `litmoe install --model <name>` downloads it — handling models split acro
 
 Every speed figure in the project comes from a log file committed alongside it. You can grep them yourself. The `.gitignore` explicitly re-includes those logs so they can't be dropped by accident.
 
-One machine, **no GPU**: a 24-core AMD EPYC server, older-generation CPU instructions only, ordinary cloud disk.
+One machine, **no GPU**: a 24-core AMD EPYC server (48 hardware threads), older-generation CPU instructions only, ordinary cloud disk at roughly 400 MB/s.
 
-| Model | Size on disk | CPU threads | Speed |
+| Model | Size on disk | Threads | Speed |
 |---|---|---:|---|
-| **Gemma-4-26B-A4B** — 26B total, 4B active, handles images | 17 GB | 24 | **9.0–12.7 tokens/sec** |
-| **Qwen3.8-9B** — 9B dense | 6 GB | 8 | 8.3–8.5 tokens/sec |
+| **Gemma-4-26B-A4B** — 26B total, 4B active, handles images | 17 GB | 24 | **9.0–12.7 tokens/sec** once loaded; 1.6–5.6 on the first request after each restart |
+| **Qwen3.8-9B-Distill** — 9B dense | 6 GB | 8 | 8.3–8.5 tokens/sec |
 | Kimi-Linear-48B | 30 GB | 48 | 0.4–0.6 — *bottlenecked by disk, not the model* |
-| DeepSeek-V4-Flash | 83 GB | 48 | 0.32–0.34 — *same problem* |
+| DeepSeek-V4-Flash, heavily compressed | 83 GB | 48 | 0.32–0.34 — *same problem* |
 
-The first two rows are the point, with one honest caveat: they were run months apart with different thread counts, so this is **not** a head-to-head race. What it does show is that both models land in the same **8–13 tokens/sec class** on this machine, despite one being three times the size. A 26B model has no business keeping up with a 9B one — unless only 4B of it is doing the work, which is exactly the case. That's the MoE effect, and it's why the laptop default is a small-active MoE and not the largest dense model that happens to fit.
+The first two rows are the point, with one honest caveat: they were run two weeks apart with different thread counts, so this is **not** a head-to-head race. What it does show is that both models land in the same **8–13 tokens/sec class** on this machine, despite one being three times the size. A 26B model has no business keeping up with a 9B one — unless only 4B of it is doing the work, which is exactly the case. That's the MoE effect, and it's why the laptop default is a small-active MoE and not the largest dense model that happens to fit.
 
-The bottom two rows stay published on purpose. Those models never fit in memory, so they were being read off the disk continuously; the numbers describe my storage, not the models. Labeling that is more useful than hiding it.
+Gemma's slow first requests are worth understanding rather than hiding: the engine was restarted seven times during that session, and each restart means re-reading 17 GB from disk before it's back in memory. Steady-state is the 9–12.7 band.
+
+The bottom two rows stay published on purpose, and they're a lesson in what these numbers can and can't tell you. Those models never fit in memory, so they were being read off the disk continuously — the figures describe my storage, not the models. They also used 48 threads on 24 physical cores, which oversubscribes the CPU and hurts rather than helps. litMoE now defaults to physical cores for exactly that reason.
 
 Two other figures were **deleted** from the docs. They came from runs whose logs got overwritten before I fixed how logging worked. They were probably accurate. They aren't reproducible, so they're gone.
 
