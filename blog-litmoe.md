@@ -1,12 +1,12 @@
 # Running Big Models on Small Machines
 
-> **TL;DR:** A capable coding assistant now runs on hardware you already own — nothing metered, nothing leaving the machine, no vendor to depend on. The hardware stopped being the obstacle a while ago; the plumbing didn't. `litMoE` is the plumbing: it works out which model fits your RAM, fetches it, starts the right engine, and puts everything at one local address that speaks the two API dialects your tools use. On an ordinary 24-core CPU with no GPU, a 26-billion-parameter model answers faster than you can read.
+> **TL;DR:** A coding assistant can run entirely on hardware you already own — nothing metered, requests never leave the machine, no vendor to depend on. The hardware isn't the obstacle; the plumbing is. `litMoE` is the plumbing: it works out which model fits your RAM, fetches it, starts the right engine, and puts everything at one local address that speaks the two API dialects your tools use. On an ordinary 24-core CPU with no GPU, a 26-billion-parameter model answers faster than you can read.
 
 ---
 
 ## The interesting thing isn't that this works. It's that it works on a CPU.
 
-This afternoon Claude Code did real work against a model running on my own machine. Nothing was billed, and every request stayed on that machine.
+Claude Code ran end to end against a model on my own machine. Nothing was billed, and every request stayed on that machine.
 
 That's possible on a CPU because of how these models are built — not because of anything new in the hardware. More on that in a moment, since it's the reason the default model in this project is what it is.
 
@@ -20,7 +20,7 @@ Neither needs help doing math. Neither does anything *around* the math:
 - They're separate programs with incompatible flags.
 - Each serves one model on one port, so your tools must know which port is which.
 - They speak the OpenAI API dialect, so Anthropic-format tools — Claude Code above all — can't reach them at all.
-- Nothing tells you which of hundreds of available models will actually run on *your* machine. You find out when the process dies, usually ten minutes into a download.
+- Nothing tells you which of hundreds of available models will actually run on *your* machine. You find out when the process dies, often after a long download.
 
 None of that is a research problem. It's just nobody's job, and it's where most people quit.
 
@@ -38,7 +38,7 @@ Your CPU only pays for what it touches. So:
 
 > A 26B model with 4B active runs at roughly the speed of a 9B dense model — and is a far better model.
 
-I measured exactly this on one machine, and it's why litMoE's default recommendation on a laptop is a small-active MoE rather than the biggest dense model that technically fits. "Fits in RAM" and "fast enough to talk to" are different questions, and most tooling only answers the first.
+I measured this on one machine — with a caveat I'll get to — and it's why litMoE's default recommendation on a laptop is a small-active MoE rather than the biggest dense model that technically fits. "Fits in RAM" and "fast enough to talk to" are different questions, and most tooling only answers the first.
 
 ---
 
@@ -89,7 +89,7 @@ So I deleted the engine. Three things survived:
 
 Claude Code speaks Anthropic's API. Local engines speak OpenAI's. They're similar but not compatible — different names for the same ideas, and a completely different format for streaming text as it's generated.
 
-litMoE translates in both directions, including the hard part: streaming. As your local model produces text, litMoE re-packages it on the fly into exactly the sequence of events Claude Code expects — ordinary text, tool calls, and reasoning blocks all handled separately and in the right order. Claude Code behaves normally throughout; the only tell is a one-line notice on startup that it doesn't recognize the model name.
+litMoE translates in both directions, including the hard part: streaming. As your local model produces text, litMoE re-packages it on the fly into exactly the sequence of events Claude Code expects — ordinary text, tool calls, and reasoning blocks all handled separately and in the right order. Claude Code behaves normally throughout; the only tell is a one-line notice that it doesn't recognize the model name.
 
 The part I care about more is that using it **changes nothing**:
 
@@ -98,7 +98,7 @@ The part I care about more is that using it **changes nothing**:
 claude                          # normal Claude Code, still your Anthropic account
 ```
 
-Most guides for this tell you to `export ANTHROPIC_BASE_URL=...` in your shell. Don't. That quietly redirects *every* Claude Code session and every Anthropic client in that terminal until you remember to undo it. `claude-local` sets those variables for one single process and then hands off to `claude`. Nothing global is written. There's no cleanup step, because there's nothing to clean up.
+The obvious approach — and what this project's own earlier docs recommended — is to `export ANTHROPIC_BASE_URL=...` in your shell. Don't. That quietly redirects *every* Claude Code session and every Anthropic client in that terminal until you remember to undo it. `claude-local` sets those variables for one single process and then hands off to `claude`. Nothing global is written. There's no cleanup step, because there's nothing to clean up.
 
 Verified end to end: inside the wrapper, Claude Code reported the local address and answered from the local model. In the very next terminal, plain `claude` was still signed in to my normal account and the shell had no stray variables.
 
@@ -128,9 +128,9 @@ Then `litmoe install --model <name>` downloads it — handling models split acro
 
 ## The numbers, with receipts
 
-Every speed figure in the project comes from a log file committed alongside it. You can grep them yourself. The `.gitignore` explicitly re-includes those logs so they can't be dropped by accident.
+Every speed figure in the table below comes from a log file committed alongside it. You can grep them yourself. The `.gitignore` explicitly re-includes those logs so they can't be dropped by accident.
 
-One machine, **no GPU**: a 24-core AMD EPYC server (48 hardware threads), older-generation CPU instructions only, ordinary cloud disk at roughly 400 MB/s.
+One machine, **no GPU**: a 24-core AMD EPYC server (48 hardware threads), AVX2 only — none of the newer vector instructions that help most here — and an ordinary cloud disk at roughly 400 MB/s.
 
 | Model | Size on disk | Threads | Speed |
 |---|---|---:|---|
@@ -169,13 +169,13 @@ Small things, but they're the difference between a tool you use daily and one yo
 
 ## What it deliberately doesn't do
 
-No inference. No model conversion. No fine-tuning. No multi-machine clustering. Every one of those is a boundary that keeps this at 3,900 lines instead of 40,000 — and each one is already somebody else's well-maintained project.
+No inference. No model conversion. No fine-tuning. No multi-machine clustering. Every one of those is a boundary that keeps this small — and each one is already somebody else's well-maintained project.
 
 ---
 
 ## Why this matters
 
-The point isn't to stop paying for frontier models. They're better, and for hard problems I still reach for them.
+The point isn't to stop paying for frontier models. On hard problems they're still better.
 
 The point is where the **floor** is. A genuinely useful coding assistant runs on a machine you already own — which means it costs nothing per token, works on a plane, keeps client code and patient data on hardware you control, and can't be deprecated, rate-limited, or repriced out from under you. For regulated work, that last category isn't a preference. It's the difference between using these tools and not.
 
@@ -189,7 +189,7 @@ So litMoE takes three positions:
 
 **Setup must be reversible.** Per-process settings, nothing global, nothing to undo. The fastest way to lose someone is to break the tool they had before you showed up.
 
-The result is unglamorous in the best way: a laptop holds a real conversation with a capable multimodal model, a server runs something with a trillion parameters, and **both answer at the same local address under a name you chose** — to curl, to Open WebUI, and to Claude Code, which carries on as normal.
+The result is unglamorous in the best way: a laptop holds a real conversation with a capable multimodal model, a server can run something with a trillion parameters, and **both answer at the same local address under a name you chose** — to curl, to Open WebUI, and to Claude Code, which carries on as normal.
 
 ---
 
