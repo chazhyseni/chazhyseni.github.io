@@ -128,14 +128,14 @@ Every speed figure in the project comes from a log file committed alongside it. 
 
 One machine, **no GPU**: a 24-core AMD EPYC server, older-generation CPU instructions only, ordinary cloud disk.
 
-| Model | Size on disk | Speed |
-|---|---|---|
-| **Gemma-4-26B-A4B** — 26B total, 4B active, handles images | 17 GB | **9.0–12.7 tokens/sec** |
-| **Qwen3.8-9B** — 9B dense | 6 GB | 8.3–8.5 tokens/sec |
-| Kimi-Linear-48B | 30 GB | 0.4–0.6 — *bottlenecked by disk, not the model* |
-| DeepSeek-V4-Flash | 83 GB | 0.32–0.34 — *same problem* |
+| Model | Size on disk | CPU threads | Speed |
+|---|---|---:|---|
+| **Gemma-4-26B-A4B** — 26B total, 4B active, handles images | 17 GB | 24 | **9.0–12.7 tokens/sec** |
+| **Qwen3.8-9B** — 9B dense | 6 GB | 8 | 8.3–8.5 tokens/sec |
+| Kimi-Linear-48B | 30 GB | 48 | 0.4–0.6 — *bottlenecked by disk, not the model* |
+| DeepSeek-V4-Flash | 83 GB | 48 | 0.32–0.34 — *same problem* |
 
-The first two rows are the whole argument. Same machine, same speed range — but one is a much stronger model that also reads images. That's the MoE effect, measured rather than asserted.
+The first two rows are the point, with one honest caveat: they were run months apart with different thread counts, so this is **not** a head-to-head race. What it does show is that both models land in the same **8–13 tokens/sec class** on this machine, despite one being three times the size. A 26B model has no business keeping up with a 9B one — unless only 4B of it is doing the work, which is exactly the case. That's the MoE effect, and it's why the laptop default is a small-active MoE and not the largest dense model that happens to fit.
 
 The bottom two rows stay published on purpose. Those models never fit in memory, so they were being read off the disk continuously; the numbers describe my storage, not the models. Labeling that is more useful than hiding it.
 
