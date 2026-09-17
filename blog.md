@@ -8,7 +8,7 @@ Notes on the tooling I build around AI agents and genomics workloads. Newest fir
 
 *September 2026 · [litMoE](https://github.com/chazhyseni/litMoE)*
 
-A small gateway that lets the AI tools you already use — Claude Code, Open WebUI, aider — talk to models running on your own hardware. It works out which model fits your RAM, starts the right engine, and puts everything at one address.
+A capable coding assistant now runs on hardware you already own — nothing metered, nothing leaving the machine, no vendor to depend on. The hardware stopped being the obstacle a while ago; the plumbing didn't.
 
 Why a 26-billion-parameter model can be as fast as a 9-billion one, how to point Claude Code at your laptop without breaking your Anthropic account, and what I learned writing an inference engine that ran at 0.019 tokens per second before deleting it.
 

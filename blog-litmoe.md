@@ -1,24 +1,28 @@
 # Running Big Models on Small Machines
 
-> **TL;DR:** `litMoE` is a small gateway that lets the AI tools you already use — Claude Code, Open WebUI, aider, anything speaking the OpenAI or Anthropic API — talk to models running on your own hardware. It works out which model fits your RAM, starts the right engine, and puts everything at one address. A 26-billion-parameter model holds a conversation at 9–12.7 tokens per second on an ordinary 24-core CPU with no GPU — comfortably faster than you read. ~3,900 lines of Python, none of which does any math.
+> **TL;DR:** A capable coding assistant now runs on hardware you already own — nothing metered, nothing leaving the machine, no vendor to depend on. The hardware stopped being the obstacle a while ago; the plumbing didn't. `litMoE` is the plumbing: it works out which model fits your RAM, fetches it, starts the right engine, and puts everything at one local address that speaks the two API dialects your tools use. On an ordinary 24-core CPU with no GPU, a 26-billion-parameter model answers faster than you can read.
 
 ---
 
-## The thing nobody tells you about local models
+## The interesting thing isn't that this works. It's that it works on a CPU.
 
-Running a large language model on your own machine is a solved problem. Two open-source projects solved it:
+This afternoon Claude Code did real work against a model running on my own machine. Nothing was billed, no request hit anyone's API, and no line of the code I was working on left the building.
 
-- **llama.cpp** runs compressed models on basically anything — a MacBook, a gaming GPU, a bare CPU.
-- **ktransformers** (Tsinghua University, published at SOSP 2025) splits a giant model between your GPU and your RAM so you can run something enormous on one box.
+A year ago that sentence needed a data-center GPU behind it. What changed isn't the hardware — it's how the best open models are now built. More on that in a moment, because it's the whole reason any of this is possible.
 
-Neither needs my help doing math. What they don't do is everything *around* the math:
+What *hasn't* changed is how much friction sits between you and that capability. Two excellent open-source engines solve the hard part:
 
-- They're two different programs with two different sets of flags.
-- Each one serves one model on one port, so your tools have to know which port is which.
-- They speak the OpenAI API, so Anthropic-format tools — Claude Code most notably — can't reach them at all.
-- Nothing tells you which of the hundreds of available models will actually run on *your* machine, or what happens when you guess wrong. (What happens is the process dies, usually ten minutes into a download.)
+- **llama.cpp** runs compressed models on almost anything — a MacBook, a gaming GPU, a bare CPU.
+- **ktransformers** (Tsinghua University, published at SOSP 2025) splits a giant model between your GPU and your RAM so one machine can run something enormous.
 
-That's the gap. It isn't a hard research problem. It's just nobody's job.
+Neither needs help doing math. Neither does anything *around* the math:
+
+- They're separate programs with incompatible flags.
+- Each serves one model on one port, so your tools must know which port is which.
+- They speak the OpenAI API dialect, so Anthropic-format tools — Claude Code above all — can't reach them at all.
+- Nothing tells you which of hundreds of available models will actually run on *your* machine. You find out when the process dies, usually ten minutes into a download.
+
+None of that is a research problem. It's just nobody's job, and it's where most people quit.
 
 ---
 
@@ -171,17 +175,21 @@ No inference. No model conversion. No fine-tuning. No multi-machine clustering. 
 
 ## Why this matters
 
-Conversations about local AI models fixate on benchmarks and compression formats. The real obstacle sits earlier: **you can't use a model your tools can't reach, and you won't keep using one whose setup broke the tools you already had.**
+The point isn't to stop paying for frontier models. They're better, and for hard problems I still reach for them.
 
-litMoE takes three positions.
+The point is that the **floor moved**. A genuinely useful coding assistant now runs on a machine you already own — which means it costs nothing per token, works on a plane, keeps client code and patient data on hardware you control, and can't be deprecated, rate-limited, or repriced out from under you. For regulated work, that last category isn't a preference. It's the difference between using these tools and not.
 
-**Use the engines other people perfected.** llama.cpp and ktransformers have years of specialist work behind them. This project's job is to make them reachable — a lesson I paid full price for.
+MoE architectures are what made that reachable without a data-center GPU. Plumbing is what's kept it out of reach anyway — and plumbing is a solvable problem that simply hadn't been anyone's job.
 
-**Fast matters more than fits.** Understanding active-versus-total parameters is the difference between a model that technically loads and one you'll actually talk to.
+So litMoE takes three positions:
 
-**Setup must be reversible.** Per-process settings, nothing global, nothing to undo. The fastest way to lose a user is to break the tool they had before you showed up.
+**Use the engines other people perfected.** llama.cpp and ktransformers have years of specialist work behind them. This project's job is to make them reachable, not to compete — a lesson I paid full price for.
 
-The result is unglamorous in the best way: a laptop holds a conversation with a capable multimodal model, a server runs something with a trillion parameters, and **both answer at the same local address under a name you chose** — to curl, to Open WebUI, and to Claude Code, which never finds out.
+**Fast beats fits.** Knowing the difference between active and total parameters is the difference between a model that technically loads and one you'll actually talk to. Most tooling answers the first question and leaves you to discover the second.
+
+**Setup must be reversible.** Per-process settings, nothing global, nothing to undo. The fastest way to lose someone is to break the tool they had before you showed up.
+
+The result is unglamorous in the best way: a laptop holds a real conversation with a capable multimodal model, a server runs something with a trillion parameters, and **both answer at the same local address under a name you chose** — to curl, to Open WebUI, and to Claude Code, which carries on as normal.
 
 ---
 
