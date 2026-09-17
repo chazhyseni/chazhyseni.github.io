@@ -8,9 +8,9 @@
 
 This afternoon Claude Code did real work against a model running on my own machine. Nothing was billed, no request hit anyone's API, and no line of the code I was working on left the building.
 
-A year ago that sentence needed a data-center GPU behind it. What changed isn't the hardware — it's how the best open models are now built. More on that in a moment, because it's the whole reason any of this is possible.
+That's possible on a CPU because of how these models are built — not because of anything new in the hardware. More on that in a moment, since it's the reason the default model in this project is what it is.
 
-What *hasn't* changed is how much friction sits between you and that capability. Two excellent open-source engines solve the hard part:
+What stands between most people and that capability isn't the model or the machine. It's friction. Two excellent open-source engines solve the hard part:
 
 - **llama.cpp** runs compressed models on almost anything — a MacBook, a gaming GPU, a bare CPU.
 - **ktransformers** (Tsinghua University, published at SOSP 2025) splits a giant model between your GPU and your RAM so one machine can run something enormous.
@@ -30,7 +30,7 @@ None of that is a research problem. It's just nobody's job, and it's where most 
 
 This is the one idea worth internalizing, because everything else follows from it.
 
-Older models are *dense*: every parameter participates in producing every word. A 30-billion-parameter dense model does 30 billion parameters' worth of work per word, and on a CPU that work is dominated by hauling those numbers out of RAM.
+Most models are *dense*: every parameter participates in producing every word. A 30-billion-parameter dense model does 30 billion parameters' worth of work per word, and on a CPU that work is dominated by hauling those numbers out of RAM.
 
 **Mixture-of-Experts (MoE)** models are built differently. The model is split into many specialist sub-networks — "experts" — and a router picks only a handful for each word. A model can hold 26 billion parameters in total but touch only 4 billion of them per word. Those 4 billion are the *active* parameters.
 
@@ -177,9 +177,9 @@ No inference. No model conversion. No fine-tuning. No multi-machine clustering. 
 
 The point isn't to stop paying for frontier models. They're better, and for hard problems I still reach for them.
 
-The point is that the **floor moved**. A genuinely useful coding assistant now runs on a machine you already own — which means it costs nothing per token, works on a plane, keeps client code and patient data on hardware you control, and can't be deprecated, rate-limited, or repriced out from under you. For regulated work, that last category isn't a preference. It's the difference between using these tools and not.
+The point is where the **floor** is. A genuinely useful coding assistant runs on a machine you already own — which means it costs nothing per token, works on a plane, keeps client code and patient data on hardware you control, and can't be deprecated, rate-limited, or repriced out from under you. For regulated work, that last category isn't a preference. It's the difference between using these tools and not.
 
-MoE architectures are what made that reachable without a data-center GPU. Plumbing is what's kept it out of reach anyway — and plumbing is a solvable problem that simply hadn't been anyone's job.
+MoE architectures are what make that practical on a CPU. Plumbing is what's kept it out of reach anyway — and plumbing is a solvable problem that simply hadn't been anyone's job.
 
 So litMoE takes three positions:
 
