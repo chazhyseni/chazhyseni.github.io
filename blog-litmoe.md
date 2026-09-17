@@ -120,7 +120,7 @@ Hermes, Open WebUI, aider, and plain `curl` work the same way — one extra endp
 
 Every entry was checked against the actual files on HuggingFace, so the sizes are real rather than estimated from the model's name.
 
-The fit calculation is simple and written down: the compressed weights, plus about 8% overhead, plus the **KV cache** (working memory that grows with how long your conversation is), plus 4 GB for the operating system. On a Mac it budgets 75% of your RAM, since Apple's unified memory is shared with the graphics chip.
+The fit calculation is simple and written down: the compressed weights, plus about 10% overhead, plus the **KV cache** (working memory that grows with how long your conversation is), plus 6 GB for the operating system. On a Mac it budgets 75% of your RAM, since Apple's unified memory is shared with the graphics chip. And because the gateway loads every configured model at once, the check is on the *sum* — three models that each fit individually can still exceed the budget together, and litMoE says so before starting rather than letting the GPU run out of memory mid-load.
 
 Then `litmoe install --model <name>` downloads it — handling models split across a dozen files, the separate vision component multimodal models need, and the several incompatible ways repositories are laid out — and writes the config for you. The context length is set to the model's maximum and trimmed only if the working memory wouldn't fit. Guessing is removed from the process.
 
